@@ -1,5 +1,5 @@
 {{- define "main" -}}
-
+<a href="mailto:subscribe@example.com?subject=Subscribe%20Me&body=Hi%2C%20I'd%20like%20to%20subscribe%20to%20the%20newsletter.">Subscribe via Email</a>
 {{ $homepage := "Home" }}
 {{ with .Site.Menus.nav }}
   {{ range first 1 . }}
@@ -23,5 +23,4 @@
     {{ end }}
   </p>
 {{ end }}
-
 {{- end -}}
