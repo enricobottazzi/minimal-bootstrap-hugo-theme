@@ -1,6 +1,29 @@
 {{- define "main" -}}
-<a href="mailto:enricobottazzi@icloud.com?subject=Subscribe%20Me&body=Hi%2C%20I'd%20like%20to%20subscribe%20to%20the%20newsletter.">Subscribe via Email</a>
-{{ $homepage := "Home" }}
+{{ $homepage := "" }}
+<div style="margin-top: 30px;">
+  <h1>{{ $homepage }}</h1>
+</div>
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.box {
+  width: 600px;
+}
+
+.italic-text {
+  font-style: italic;
+}
+</style>
+</head>
+<body>
+
+<div class="box">
+  <p class="italic-text">Leku, Place. Origin: basque. Cognate with latin locu(m) and celtic *lek. </p>
+</div>
+
+</body>
+</html>
 {{ with .Site.Menus.nav }}
   {{ range first 1 . }}
     {{ $homepage = .Name }}
