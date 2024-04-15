@@ -44,18 +44,14 @@
   {{ end }}
 
   {{ partial "style.html" . }}
-
-  {{- $image := "" }}
-  {{- with .Params.images }}
-    {{- $image = index . 0 }}
-  {{- end }}
-
-  <meta name="twitter:card" content="{{ if $image }}summary_large_image{{ else }}summary{{ end }}">
-  <meta name="twitter:image" content="{{ if $image }}{{ $image | absURL }}{{ end }}">
+  <meta name="twitter:card" content="{{ if isset .Params "images" }}summary_large_image{{ else }}summary{{ end }}">
+  {{ with index .Params.images 0 }}
+  <meta name="twitter:image" content="{{ . | absURL }}">
+  {{ end }}
   <meta name="twitter:title" content="{{ .Title }}">
-  <meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Summary }}{{ end }}">
-
-  {{- with .Site.Params.social.twitter }}
+  <meta name="twitter:description" content="{{ .Params.description | default .Summary }}">
+  
+  {{ with .Site.Params.social.twitter }}
   <meta name="twitter:site" content="{{ if not (strings.HasPrefix . "@") }}@{{ . }}{{ else }}{{ . }}{{ end }}">
-  {{- end }}
+  {{ end }}  
 </head>
